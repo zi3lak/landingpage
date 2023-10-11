@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CyberSentinel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="banner">
+    <img src="https://cdn.midjourney.com/e7ff92ee-141a-4ec8-bb29-bed37bdf6f80/0_3.png" alt="Header Image" style="width:1280px; height:500px;">
+</div>
+
+
+<div class="content">
+    
+    <div class="container">
+        <form id="registration-form">
+            <label for="fname">First Name</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+            
+            <label for="lname">Last Name</label><br>
+            <input type="text" id="lname" name="lname" required><br>
+            
+            <label for="phone">Phone</label><br>
+            <input type="tel" id="phone" name="phone" required><br>
+            
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" required><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="description-right">
+        <h2>Managed Threat Complete</h2>
+        <p>A total solution that re-balances your security program, so your team can focus on the proactive, strategic work, while ours keeps eyes locked on your environment 24/7/365 with immediate, end-to-end detection and response.</p>
+        <h3>These demos will cover:</h3>
+        <ul>
+            <li>CyberSentinel unlimited vulnerability management to uncover risks earlier and shrink your attack surface</li>
+            <li>Our managed detection and response (MDR) service, to monitor that surface for you</li>
+            <li>Expert handling of anomalies and threats and, if there’s a breach, unlimited digital forensics and incident response</li>
+            <li>Strategic guidance and tangible ROI</li>
+        </ul>
+        <p>Managed Threat Complete brings the brainpower and firepower you need to focus all of your resources efficiently and effectively. Because results should always be part of every security program.</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registration-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const data = {
+            fname: document.getElementById('fname').value,
+            lname: document.getElementById('lname').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+        };
+
+        console.log('Submitting data:', data);
+
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>

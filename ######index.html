@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+    <img src="https://cdn.midjourney.com/e7ff92ee-141a-4ec8-bb29-bed37bdf6f80/0_3.png" alt="Header Image" style="width:1280px; height:500px;">
+
+    <h1>Konsultacja</h1>
+
+    <div class="description">
+        Chcesz zwiększyć swoje bezpieczeństwo cybernetyczne? Wypełnij ten formularz, aby umówić się na konsultacje z naszymi doświadczonymi testerami penetracyjnymi.
+        Nasza firma oferuje profesjonalne usługi z zakresu bezpieczeństwa IT. Skontaktuj się z nami już teraz i skorzystaj z promocji: <strong>10% zniżki na pierwsze konsultacje!</strong>
+    </div>
+
+
+   
+<div class="container">
+    <form id="registration-form">
+        <label for="fname">Imię</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        
+        <label for="lname">Nazwisko</label><br>
+        <input type="text" id="lname" name="lname" required><br>
+        
+        <label for="phone">Telefon</label><br>
+        <input type="tel" id="phone" name="phone" required><br>
+        
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" required><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
+<script>
+    document.getElementById('registration-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const data = {
+            fname: document.getElementById('fname').value,
+            lname: document.getElementById('lname').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+        };
+
+        console.log('Submitting data:', data);
+
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>
+
+</html>
+
+
+
